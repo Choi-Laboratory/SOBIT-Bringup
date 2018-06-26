@@ -6,7 +6,7 @@ print str
 
 print str.split(";")
 
-
+##追加しました
 
 
 
