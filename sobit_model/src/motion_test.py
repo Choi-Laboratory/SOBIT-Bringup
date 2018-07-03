@@ -17,9 +17,8 @@ ser=serial.Serial(
 #   interCharTimeout = None
 )
 
-#joint_name =  ["L_wheel\t","R_wheel\t","L_shoulder_roll","L_shoulder_pitch","L_elbow_yaw","L_shoulder_pitch","R_shoulder_roll","R_shoulder_pitch","R_elbow_yaw","R_elbow_pitch", "neck_pitch","neck_roll\t","neck_yaw\t"]
-
 joint_name =  ["motion_time","L_wheel\t","R_wheel\t","L_shoulder_roll","L_shoulder_pitch","L_elbow_yaw","L_shoulder_pitch", "R_shoulder_roll","R_shoulder_pitch","R_elbow_yaw","R_elbow_pitch", "neck_pitch","neck_roll\t","neck_yaw\t","nouse","nouse","nouse","nouse","nouse", "L_hand_yaw","L_hand_thumb","L_hand_index","L_hand_mid","L_hand_ring","L_hand_pinky", "R_hand_yaw","R_hand_thumb","R_hand_index","R_hand_mid","R_hand_ring","R_hand_pinky"]
+
 
 ###############################################################################################################
 def cul_motion(motion_deg):
@@ -77,7 +76,7 @@ def callback(joint):
 		motion_deg = ["0.0","0.0","0.0","0.0","0.0","0.0", "0.0","0.0","0.0","0.0", "0.0","0.0","0.0"]
 
 		print "\n<READ_JOINT_STATES>"
-		print joint.position
+		#print joint.position;####
 
 		#生データ参照
 		#for i in range(0,13):
@@ -95,10 +94,10 @@ def callback(joint):
 		print motion
 
 		#モーションの送信		
-		print "\n<motion send>"
+		print "<MOTION_SEND>"
 		#print "@00c8:T"+motion[1]+":T"+motion[2]+":T"+motion[3]+":T0000:T"+motion[5]+":T"+motion[6]+":T"+motion[7]+":T"+motion[8]+":T"+motion[9]+":T"+motion[10]+":"+motion[11] +":T"+motion[12]+":T"+motion[13]+"::::::T8000:T8000:T6800:T9800:T6800:T9800:T8000:T8000:T9800:T6800:T9800:T6800"
 		#rospy.sleep(0.1)
-		ser.write("@0011:T"+motion[1]+":T"+motion[2]+":T"+motion[3]+":T0000:T"+motion[5]+":T"+motion[6]+":T"+motion[7]+":T"+motion[8]+":T"+motion[9]+":T"+motion[10]+":"+motion[11] +":T"+motion[12]+":T"+motion[13]+"::::::T8000:T8000:T6800:T9800:T6800:T9800:T8000:T8000:T9800:T6800:T9800:T6800\n")	
+		ser.write("@0011:T"+motion[1]+":T"+motion[2]+":T"+motion[3]+":T0000:T"+motion[5]+":T"+motion[6]+":T"+motion[7]+":T"+motion[8]+":T"+motion[9]+":T"+motion[10]+":T"+motion[11]+":T"+motion[12]+":T"+motion[13]+"::::::T8000:T8000:T6800:T9800:T6800:T9800:T8000:T8000:T9800:T6800:T9800:T6800\n")	
 		print ser.readline(),
 
 
@@ -170,7 +169,7 @@ if __name__ == '__main__':
 			print "<pose_init>"	
 			ser.write("@00c8:T8000:T8000:T8000:T0000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000::::::T8000:T8000:T6800:T9800:T6800:T9800:T8000:T8000:T9800:T6800:T9800:T6800\n")
 			print ser.readline(),
-			rospy.sleep(1)
+			rospy.sleep(3)
 
 			print "<gain_off>"
 			ser.write("P0000\n")
