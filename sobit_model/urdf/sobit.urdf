@@ -9,7 +9,7 @@
         <color rgba="0.1 0.1 0.1 1.0"/>
       </material>
 
-  <!--link-->
+  <!--link ####################################################################-->
   <!--base_frame link-->
   <link name="base_frame">
     <visual>
@@ -26,7 +26,7 @@
   <link name="left_wheel">
     <visual>
       <geometry>
-        <mesh filename="package://sobit_model/mesh/wheel.dae"/>
+        <mesh filename="package://sobit_model/mesh/wheel.stl"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="black">
@@ -179,10 +179,119 @@
     </visual>
   </link>
 
+  <!-- left_hand -->
+  <!--left_hand_link-->
+  <link name="left_hand">
+    <visual>
+      <geometry>
+        <mesh filename="package://sobit_model/mesh/SOBIT_hand.stl"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
 
-  <!-- joint -->
+  <!--left_thumb_link-->
+  <link name="left_hand_thumb">
+    <visual>
+      <geometry>
+        <mesh filename="package://sobit_model/mesh/SOBIT_thumb.stl"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+  <!--left_index_link-->
+  <link name="left_hand_index">
+    <visual>
+      <geometry>
+        <mesh filename="package://sobit_model/mesh/SOBIT_index.stl"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+  <!--left_middle_link-->
+  <link name="left_hand_middle">
+    <visual>
+      <geometry>
+         <mesh filename="package://sobit_model/mesh/SOBIT_index.stl" scale="1 1 1.0588"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+  <!--left_ring_link-->
+  <link name="left_hand_ring">
+    <visual>
+      <geometry>
+         <mesh filename="package://sobit_model/mesh/SOBIT_index.stl" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+  <!--left_pinky_link-->
+  <link name="left_hand_pinky">
+    <visual>
+      <geometry>
+         <mesh filename="package://sobit_model/mesh/SOBIT_index.stl" scale="1 1 0.88"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+  <!-- right_hand -->
+  <!--right_hand_link-->
+  <link name="right_hand">
+    <visual>
+      <geometry>
+        <mesh filename="package://sobit_model/mesh/SOBIT_hand_right.stl"/>
+      </geometry>
+      <origin rpy="0 0 3.14" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+   <!--right_thumb_link-->
+  <link name="right_hand_thumb">
+    <visual>
+      <geometry>
+        <mesh filename="package://sobit_model/mesh/SOBIT_thumb_right.stl"/>
+      </geometry>
+      <origin rpy="0 3.14 0" xyz="0 0 0"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+  <!--right_hand_twist link-->
+  <link name="right_hand_twist">
+    <visual>
+      <geometry>
+        <box size="0.06 0.01 0.07"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.03 0.01 -0.035"/>
+      <material name="black">
+      </material>
+    </visual>
+  </link>
+
+  <!-- joint  ################################################################## -->
   <!-- wheel -->
-  <!--base_frame to left_wheel joint-->
+  <!--left_wheel joint-->
   <joint name="left_wheel" type="continuous">
     <parent link="base_frame"/>
     <child link="left_wheel"/>
@@ -190,7 +299,7 @@
     <origin xyz="0.08 0.16 0.05"/>
   </joint>
 
-  <!--base_frame to right_wheel joint-->
+  <!--right_wheel joint-->
   <joint name="right_wheel" type="continuous">
     <parent link="base_frame"/>
     <child link="right_wheel"/>
@@ -204,11 +313,11 @@
     <parent link="left_shoulder"/>
     <child link="left_first_arm"/>
     <axis xyz="1 0 0"/>
-    <origin rpy="0.1 0 0" xyz="0.00 0.075 0"/>
+    <origin rpy="0.0 0 0" xyz="0.00 0.075 0"/>
      <limit effort="1000" lower="0" upper="3.14" velocity="0.5"/>
   </joint>
 
-  <!--base_frame to left_shoulder joint-->
+  <!--left_shoulder_pitch joint-->
   <joint name="left_shoulder_pitch" type="revolute">
     <parent link="base_frame"/>
     <child link="left_shoulder"/>
@@ -217,12 +326,12 @@
      <limit effort="1000" lower="-3.14" upper="1.571" velocity="0.5"/>
   </joint>
 
-  <!--left_first_arm to left_elbow joint-->
+  <!--left_elbow_yaw joint-->
   <joint name="left_elbow_yaw" type="revolute">
     <parent link="left_first_arm"/>
     <child link="left_elbow"/>
     <axis xyz="0 0 1"/>
-    <origin rpy="0 0 0" xyz="0.00 0 -0.175"/>
+    <origin rpy="0 0 -1.571" xyz="0.00 0 -0.175"/>
      <limit effort="1000" lower="-1.571" upper="3.14" velocity="0.5"/>
   </joint>
 
@@ -241,7 +350,7 @@
     <parent link="right_shoulder"/>
     <child link="right_first_arm"/>
     <axis xyz="1 0 0"/>
-    <origin rpy="-0.1 0 0" xyz="0.00 -0.075 0"/>
+    <origin rpy="0.0 0 0" xyz="0.00 -0.075 0"/>
      <limit effort="1000" lower="-3.14" upper="0" velocity="0.5"/>
   </joint>
 
@@ -259,7 +368,7 @@
     <parent link="right_first_arm"/>
     <child link="right_elbow"/>
     <axis xyz="0 0 1"/>
-    <origin rpy="0 0 0" xyz="0.00 0 -0.175"/>
+    <origin rpy="0 0 1.571" xyz="0.00 0 -0.175"/>
      <limit effort="1000" lower="-3.14" upper="1.571" velocity="0.5"/>
   </joint>
 
@@ -301,7 +410,85 @@
   </joint>
 
 
- 
+  <!-- left_hand -->
+  <!--left_hand_wrist joint-->
+  <joint name="left_hand_wrist" type="revolute">
+    <parent link="left_second_arm"/>
+    <child link="left_hand"/>
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 1.571" xyz="0 0.04 -0.17"/>
+     <limit effort="1000" lower="-1.571" upper="1.571" velocity="0.5"/>
+  </joint>
+
+  <!--left_hand_thumb joint-->
+  <joint name="left_hand_thumb" type="revolute">
+    <parent link="left_hand"/>
+    <child link="left_hand_thumb"/>
+    <axis xyz="0 -1 0"/>
+    <origin rpy="0 0 0" xyz="0.04 -0.035 -0.055"/>
+     <limit effort="1000" lower="-1.571" upper="1.571" velocity="0.5"/>
+  </joint>
+
+  <!--left_hand_index joint-->
+  <joint name="left_hand_index" type="revolute">
+    <parent link="left_hand"/>
+    <child link="left_hand_index"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.04 -0.01 -0.09"/>
+     <limit effort="1000" lower="-1.571" upper="0" velocity="0.5"/>
+  </joint> 
+
+  <!--left_hand_middle joint-->
+  <joint name="left_hand_middle" type="revolute">
+    <parent link="left_hand"/>
+    <child link="left_hand_middle"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.02 -0.01 -0.09"/>
+     <limit effort="1000" lower="-1.571" upper="0" velocity="0.5"/>
+  </joint> 
+
+  <!--left_hand_ring joint-->
+  <joint name="left_hand_ring" type="revolute">
+    <parent link="left_hand"/>
+    <child link="left_hand_ring"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 -0.01 -0.09"/>
+     <limit effort="1000" lower="-1.571" upper="0" velocity="0.5"/>
+  </joint> 
+
+  <!--left_hand_pinky joint-->
+  <joint name="left_hand_pinky" type="revolute">
+    <parent link="left_hand"/>
+    <child link="left_hand_pinky"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="-0.02 -0.01 -0.09"/>
+     <limit effort="1000" lower="-1.571" upper="0" velocity="0.5"/>
+  </joint> 
+
+  <!-- right_hand -->
+  <!--right_hand_wrist joint-->
+  <joint name="right_arm_to_right_hand" type="fixed">
+    <parent link="right_second_arm"/>
+    <child link="right_hand"/>
+    <origin rpy="0 0 1.571" xyz="0 -0.04 -0.17"/>  
+  </joint>
+
+  <!--right_hand_wrist joint-->
+  <joint name="right_hand_to_right_thumb" type="fixed">
+    <parent link="right_hand"/>
+    <child link="right_hand_thumb"/>
+    <origin rpy="0 0 0" xyz="-0.04 -0.035 -0.055"/>
+  </joint> 
+
+  <!--right_hand_twist joint-->
+  <joint name="right_hand_twist" type="revolute">
+    <parent link="right_hand"/>
+    <child link="right_hand_twist"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="-0.02 -0.01 -0.09"/>
+     <limit effort="1000" lower="-1.571" upper="0" velocity="0.5"/>
+  </joint>
+
 
 </robot>
 

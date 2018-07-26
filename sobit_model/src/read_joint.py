@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-
 import rospy
 from sensor_msgs.msg import *
 
 def callback(joint):
 	print joint.position
+	
 
  
 def joint_read():
@@ -17,4 +17,3 @@ def joint_read():
 
 if __name__ == '__main__':
     joint_read()
-
