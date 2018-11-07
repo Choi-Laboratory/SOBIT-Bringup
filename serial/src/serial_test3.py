@@ -80,19 +80,19 @@ while True:
 		##############################################################################################
 		#<motion>		
 		elif command == 6: 
-			print "move left_shoulder_roll"
+			print "move left_shoulder_pitch"
 			motion_deg = input("take in(0-180>")
 			if motion_deg < 0:
 				print "range out"
 				motion_deg = 0
-			motion_shoulder_roll = 32768 + motion_deg * 97
-			print motion_shoulder_roll
+			motion_shoulder_pitch = motion_deg * 97
+			print motion_shoulder_pitch
 
-			motion_shoulder_roll = '%x' % motion_shoulder_roll
-			print motion_shoulder_roll
-			#motion = "@00c8:T8000:T8000:T" + motion_shoulder_roll + ":T0000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000::::::T8000:T8000:T6800:T9800:T6800:T9800:T8000:T8000:T9800:T6800:T9800:T6800\n"
-			#print motion
-			ser.write("@00c8:T8000:T8000:T" + motion_shoulder_roll + ":T0000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000::::::T8000:T8000:T6800:T9800:T6800:T9800:T9E37:T8000:T9800:T6800:T9800:T6800\n")
+			motion_shoulder_pitch = '%x' % motion_shoulder_pitch
+			print motion_shoulder_pitch
+			motion = "@00c8:T8000:T8000:T8000T"+motion_shouler_pitch+"T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000::::::T8000:T8000:T6800:T9800:T6800:T9800:T8000:T8000:T9800:T6800:T9800:T6800\n"
+			print motion
+			#ser.write("@00c8:T8000:T8000:T" + motion_shoulder_roll + ":T0000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000:T8000::::::T8000:T8000:T6800:T9800:T6800:T9800:T9E37:T8000:T9800:T6800:T9800:T6800\n")
 			print ser.readline(),
 
 
@@ -114,5 +114,3 @@ while True:
 		print "except"
 		break
 		
-
-

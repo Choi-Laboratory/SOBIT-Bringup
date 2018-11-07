@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot name="one_arm">
+
+  <!--base_footprint link-->
+  <link name="base_footprint">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.05"/>
+      <material name="gray">
+        <color rgba="0.8 0.8 0.8 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+   <!--first_arm link-->
+  <link name="first_arm">
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.11"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.045"/>
+      <material name="gray">
+      </material>
+    </visual>
+  </link>
+
+   <!--second_arm link-->
+  <link name="second_arm">
+    <visual>
+      <geometry>
+        <mesh filename="package://robot_description/mesh/test2.stl"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.00"/>
+      <material name="gray">
+      </material>
+    </visual>
+  </link>
+
+  <!--base_footprint to first_arm joint-->
+  <joint name="base_footprint_to_first" type="revolute">
+    <parent link="base_footprint"/>
+    <child link="first_arm"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0.0 0.1"/>
+    <limit effort="1000" lower="-1.571" upper="1.571" velocity="0.5"/>
+  </joint>
+
+  <!--first_arm to second_arm joint-->
+  <joint name="first_arm_to_second" type="revolute">
+    <parent link="first_arm"/>
+    <child link="second_arm"/>
+    <axis xyz="0 1 1"/>
+    <origin xyz="0 0.0 0.1"/>
+    <limit effort="1000" lower="-1.571" upper="1.571" velocity="0.5"/>
+  </joint>
+
+</robot>
+
