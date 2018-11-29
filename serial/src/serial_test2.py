@@ -6,7 +6,7 @@ import rospy
 from sensor_msgs.msg import *
 
 ser=serial.Serial(
-  	port = '/dev/ttyUSB1',
+  	port = '/dev/vsrc',
    	baudrate = 115200,
  	 	parity = serial.PARITY_NONE, 
  	 	bytesize = serial.EIGHTBITS,
