@@ -73,9 +73,9 @@ def cul_wheel(vel,ang):
 
 	elif ang < 0: #右回転
 			L_motion_deg += motion_in
-			L_motion_deg += motion_ang
+			L_motion_deg -= motion_ang
 			R_motion_deg += motion_in
-			R_motion_deg -= motion_ang
+			R_motion_deg += motion_ang
 
 	elif ang > 0: #左回転
 			L_motion_deg += motion_in

@@ -1,6 +1,6 @@
 <!-- urdf -->
 <launch>
-    <arg name="model" default="$(find sobit_description)/urdf/sobit.urdf"/>/>
+    <arg name="model" default="$(find sobit_description)/robots/sobit.urdf"/>/>
     <arg name="gui" default="True" />
     <param name="robot_description" textfile="$(arg model)" />
     <param name="use_gui" value="$(arg gui)"/>
