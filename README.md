@@ -1,4 +1,4 @@
-# SOBIT-Bringup
+# SOBIT_blue
 Ros package of SOBIT (Robovie R2)
 
 #　author 
